@@ -1,0 +1,110 @@
+---
+// DemoVideo.astro — Section 5: Demo media gallery
+---
+<section id="demo-video" class="content-section">
+  <div class="section-container">
+    <h2 class="section-heading reveal">Demo Gallery</h2>
+
+    <div class="media-grid reveal">
+      
+      <div class="media-item card">
+        <img src="/path-to-your-image1.jpg" alt="Demo Image 1" />
+      </div>
+
+      <div class="media-item card">
+        <img src="/path-to-your-image2.jpg" alt="Demo Image 2" />
+      </div>
+
+      <div class="media-item card video-item">
+        <div class="video-container">
+          <iframe
+            src="https://drive.google.com/file/d/1KzPWLz3nezkVdFmeEmsCXbyc-ZKv6xac/preview"
+            allow="autoplay"
+            allowfullscreen
+            frameborder="0"
+          ></iframe>
+        </div>
+      </div>
+
+    </div>
+
+    </div>
+</section>
+
+<style>
+  .section-heading {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.75rem;
+  }
+
+  .section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 48px;
+    height: 3px;
+    background: var(--color-accent);
+    border-radius: 2px;
+  }
+
+  /* The Grid/Flex Layout */
+  .media-grid {
+    display: flex;
+    gap: 1rem; /* Space between items */
+    align-items: stretch; /* Makes sure images and video are the same height */
+    width: 100%;
+  }
+
+  .media-item {
+    flex: 1; /* Makes all 3 items equal width */
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: #0f0f14;
+    display: flex;
+  }
+
+  /* Image Styling */
+  .media-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents stretching */
+    display: block;
+  }
+
+  /* Video Container Styling */
+  .video-container {
+    width: 100%;
+    position: relative;
+    padding-top: 56.25%; /* Maintains 16:9 aspect ratio */
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Mobile Responsive: Stack them vertically on small screens */
+  @media (max-width: 768px) {
+    .media-grid {
+      flex-direction: column;
+    }
+  }
+
+  .video-caption {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    text-align: center;
+    margin-top: 1rem;
+    font-style: italic;
+    line-height: 1.6;
+  }
+</style>
