@@ -1,5 +1,5 @@
 ---
-// ProblemStatement.astro — Section 2: Problem statement paragraphs
+// ProblemStatement.astro — Section 2: Abstract
 ---
 <section id="problem-statement" class="content-section">
   <div class="section-container">
@@ -67,11 +67,15 @@ sentative baselines end-to-end
   }
 
   .prose p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: var(--color-text);
-    margin-bottom: 1.25rem;
-  }
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  margin-bottom: 1.25rem;
+
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
 
   .prose p:last-child {
     margin-bottom: 0;
