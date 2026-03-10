@@ -1,127 +1,236 @@
 ---
 // Hero.astro — Title section with paper name
 ---
-<section id="hero" class="hero-section">
-  <div class="hero-inner">
-    <div class="hero-badge">IROS 2026</div>
-    <h1 class="hero-title">
-      <span class="title-main">VibraBox: Vibration-Aware Black Box for Perception-Faithful Replay
-on Mobile Robots</span>
-    </h1>
-    <p class="hero-subtitle">Adaptive and Efficient Storage under Vibration</p>
 
-    <!-- TODO: Uncomment and fill in author info after acceptance -->
-    <!--
-    <div class="hero-authors">
-      <p>Author 1<sup>1</sup>, Author 2<sup>2</sup>, Author 3<sup>1</sup></p>
-      <p class="affiliations"><sup>1</sup>University A &nbsp; <sup>2</sup>University B</p>
-    </div>
-    -->
+<section id="hero" class="hero-section">
+
   </div>
+
+    <h1 class="hero-title">
+      VibraBox: Vibration-Aware Black Box for Perception-Faithful Replay on Mobile Robots
+    </h1>
+
+    <p class="hero-subtitle">
+      Adaptive and Efficient Storage under Vibration
+    </p>
+
+  </div>
+
+  <div class="hero-inner">
+
+    <!-- Paper banner -->
+    <div class="paper-box">
+
+      <div class="paper-left">
+        <span class="paper-icon">📄</span>
+        <span class="paper-title">Supplementary Materials</span>
+      </div>
+
+     <div class="paper-links">
+
+  <a href="/appendix.pdf" class="paper-btn">
+    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+    </svg>
+    Appendix
+  </a>
+
+  <a href="https://roboworld314.github.io" class="paper-btn">
+    <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2C6.48 2 2 6.48 2 12a10 10 0 0 0 6.84 9.49c.5.09.66-.22.66-.48v-1.67c-2.78.61-3.37-1.2-3.37-1.2-.45-1.14-1.1-1.44-1.1-1.44-.9-.61.07-.6.07-.6 1 .07 1.53 1.02 1.53 1.02.88 1.51 2.31 1.07 2.87.82.09-.64.34-1.07.61-1.32-2.22-.25-4.55-1.11-4.55-4.92 0-1.08.38-1.96 1.02-2.65-.1-.25-.44-1.28.1-2.67 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.84c.85 0 1.7.11 2.5.32 1.9-1.29 2.74-1.02 2.74-1.02.55 1.39.21 2.42.11 2.67.63.69 1.02 1.57 1.02 2.65 0 3.82-2.34 4.67-4.57 4.92.35.3.67.9.67 1.82v2.7c0 .27.17.58.67.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10z"/>
+    </svg>
+    Code
+  </a>
+
+  <a href="https://github.com/yanglei18/V2X-Radar" class="paper-btn">
+    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <ellipse cx="12" cy="5" rx="9" ry="3"/>
+      <path d="M3 5v6c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/>
+      <path d="M3 11v6c0 1.66 4.03 3 9 3s9-1.34 9-3v-6"/>
+    </svg>
+    Dataset
+  </a>
+
+  <a href="/video" class="paper-btn">
+    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <polygon points="23 7 16 12 23 17 23 7"/>
+      <rect x="1" y="5" width="15" height="14" rx="2"/>
+    </svg>
+    Video
+  </a>
+
+</div>
+
+  
 </section>
 
+
 <style>
-  .hero-section {
-    padding: 5rem 1.5rem 3rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+
+.hero-section {
+  padding: 5rem 1.5rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(192,94,60,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+
+/* ---------------- */
+/* Paper Banner */
+/* ---------------- */
+
+.paper-box{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:2rem;
+
+  width:100%;
+  max-width:1000px;
+  margin:0 auto 0.3rem auto;
+
+  padding:1rem 1.5rem;
+
+  background:#f4f4f4;
+  border-radius:22px;
+  border:1px solid rgba(0,0,0,0.08);
+}
+
+.paper-left{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  font-weight:600;
+  color:var(--color-primary);
+}
+
+.paper-icon{
+  font-size:1.3rem;
+}
+
+.paper-links{
+  display:flex;
+  gap:.7rem;
+  align-items:center;
+}
+
+/* Buttons */
+.paper-btn{
+  background:#223253;
+  color:white;
+
+  min-width:110px;      /* same width */
+  text-align:center;
+
+  padding:.55rem 1rem;
+  border-radius:30px;
+
+  font-size:.9rem;
+  font-weight:500;
+  text-decoration:none;
+
+  transition:all .2s ease;
+}
+
+.paper-btn:hover{
+  background:#1a2740;
+}
+
+/* ---------------- */
+/* Title */
+/* ---------------- */
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 3.0rem;
+  font-weight: 400;
+  color: var(--color-primary);
+  line-height: 1.15;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.02em;
+
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:0rem; 
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.35rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.paper-btn{
+  display:flex;
+  align-items:center;
+  gap:.45rem;
+
+  background:#223253;
+  color:white;
+
+  padding:.45rem .95rem;
+  border-radius:20px;
+
+  font-size:.9rem;
+  font-weight:500;
+  text-decoration:none;
+}
+
+.btn-icon{
+  width:16px;
+  height:16px;
+  stroke-width:2;
+}
+
+
+/* ---------------- */
+/* Mobile */
+/* ---------------- */
+
+@media (max-width:768px){
+
+  .hero-section{
+    padding: 3.5rem 1.5rem 2rem;
   }
 
-  .hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(192, 94, 60, 0.06) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
+  .hero-title{
+    font-size:2.2rem;
   }
 
-  .hero-inner {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-    margin: 0 auto;
+  .hero-subtitle{
+    font-size:1.1rem;
   }
 
-  .hero-badge {
-    display: inline-block;
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    background: rgba(192, 94, 60, 0.08);
-    border: 1px solid rgba(192, 94, 60, 0.2);
-    padding: 0.4rem 1.2rem;
-    border-radius: 100px;
-    margin-bottom: 2rem;
+  .paper-box{
+    flex-direction:column;
   }
 
-  .hero-title {
-    font-family: var(--font-heading);
-    font-size: 3.2rem;
-    font-weight: 400;
-    color: var(--color-primary);
-    line-height: 1.15;
-    margin-bottom: 0.8rem;
-    letter-spacing: -0.02em;
-  }
+}
 
-  .title-main {
-    display: block;
-  }
-
-  .hero-subtitle {
-    font-family: var(--font-body);
-    font-size: 1.35rem;
-    font-weight: 300;
-    color: var(--color-text-muted);
-    line-height: 1.5;
-    max-width: 600px;
-    margin: 0 auto;
-    letter-spacing: 0.01em;
-  }
-
-  .hero-authors {
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--color-border-light);
-  }
-
-  .hero-authors p {
-    font-size: 1rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-  }
-
-  .hero-authors .affiliations {
-    font-size: 0.9rem;
-    color: var(--color-text-light);
-    margin-top: 0.3rem;
-  }
-
-  .hero-authors sup {
-    font-size: 0.7em;
-    color: var(--color-accent);
-  }
-
-  @media (max-width: 768px) {
-    .hero-section {
-      padding: 3rem 1rem 2rem;
-    }
-
-    .hero-title {
-      font-size: 2.2rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.1rem;
-    }
-  }
 </style>
