@@ -3,26 +3,40 @@
 ---
 <section id="problem-statement" class="content-section">
   <div class="section-container">
-    <h2 class="section-heading reveal">Problem Statement</h2>
+    <h2 class="section-heading reveal">Abstract</h2>
 
     <div class="prose reveal">
       <!-- TODO: Replace with your actual problem statement paragraph 1 -->
       <p>
-        Connected and autonomous vehicles (CAVs) generate vast amounts of sensor and telemetry data 
-        that must be reliably stored as a "black box" for forensic analysis, regulatory compliance, 
-        and continuous learning. However, the harsh vibrational environment inside a moving vehicle 
-        presents significant challenges to conventional storage systems, leading to data corruption, 
-        mechanical failures, and reduced device lifespans.
+         Mobile robots increasingly operate in open-world
+environments where rare failures and near-misses are in-
+evitable. To ensure that each failure becomes a once-in-a-
+lifetime event, the central bottleneck is faithfully reconstructing
+what the robot perceived, estimated, and decided at critical
+moments. Existing recorders either miss internal autonomy
+evidence or cannot sustain always-on capture within onboard
+budgets, and vibration can corrupt sensor data and make replay
+“fail differently” than online behavior. We present VibraBox, a
+vibration-aware robot Black Box for deployable, perception-
+faithful replay. VibraBox provides an event-driven two-mode
+recorder: always-on bounded buffering in “routine mode” and
+trigger-to-commit pre/during/post-event persistence in “Black
+Box mode” to retain critical pre-event cues for diagnosis; it
+then makes each event package replay-sufficient yet storage-
+efficient via a three-stage data-plane optimization that removes
+temporal/spatial redundancy at the frame/point/byte levels, and
+a vibration-aware control plane that adapts logging to mobility-
+induced vibration. On a robotic vehicle across indoor/outdoor
+routes spanning low to high vibration, VibraBox makes always-
+on persistence practical (up to 46% storage reduction, 52%
+lower CPU, and 51.7% lower end-to-end latency) while im-
+proving replay stability (up to 50% lower trajectory error
+and 71.4% lower rotational drift). It further improves seman-
+tic preservation (online-vs-replay consistency) and robustness
+across mainstream LiDAR detectors, and outperforms repre-
+sentative baselines end-to-end 
       </p>
 
-      <!-- TODO: Replace with your actual problem statement paragraph 2 -->
-      <p>
-        Existing solutions either sacrifice storage capacity for durability or fail to adapt to 
-        varying vibration profiles encountered during real-world driving. There is a critical need 
-        for a storage architecture that dynamically adjusts its write strategies and error-correction 
-        mechanisms based on real-time vibration sensing, while maintaining high throughput and 
-        storage efficiency.
-      </p>
     </div>
   </div>
 </section>
