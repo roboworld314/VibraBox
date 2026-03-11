@@ -6,7 +6,7 @@ const imageGroups = [
   {
     description: "Comparison of storage write patterns under low-frequency vibration (5-20 Hz). Left: baseline approach showing data fragmentation. Right: our adaptive method maintaining sequential writes.",
     images: [
-      { src: "/images/Screenshot 2026-03-10 at 4.22.29 PM.png", alt: "Baseline approach under low-frequency vibration" },
+      { src: "/images/problem_vibration.png", alt: "Baseline approach under low-frequency vibration" },
       { src: "/images/image1.jpg", alt: "Our adaptive approach under low-frequency vibration" },
     ],
   },
@@ -98,12 +98,11 @@ const imageGroups = [
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
-
-  .image-card {
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    background: var(--color-surface);
-  }
+.image-card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+}
 
   .image-card img {
     width: 100%;
