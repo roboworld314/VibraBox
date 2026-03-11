@@ -6,9 +6,11 @@ const imageGroups = [
   {
     description: "Comparison of storage write patterns under low-frequency vibration (5-20 Hz). Left: baseline approach showing data fragmentation. Right: our adaptive method maintaining sequential writes.",
    images: [
-    { src: "/images/image1.jpg", alt: "Conventional storage under high-frequency vibration" },
-    { src: "https://drive.google.com/uc?export=view&id=1cCOkD-07gkVU_4yxMg31fcoXqf5gX9MT", alt: "Adaptive storage under high-frequency vibration" },
-  ],
+      // Make sure image1.jpg is inside your /public/images/ folder!
+      { src: "/images/image1.jpg", alt: "Conventional storage" }, 
+      // Updated Google Drive URL format
+      { src: "https://drive.google.com/thumbnail?id=1cCOkD-07gkVU_4yxMg31fcoXqf5gX9MT&sz=w1000", alt: "Adaptive storage" },
+    ],
   },
   {
     description: "Performance under high-frequency vibration (50-200 Hz). Left: conventional storage with visible write errors. Right: our system dynamically adjusting error-correction levels.",
@@ -91,6 +93,8 @@ const imageGroups = [
     color: var(--color-text-muted);
     margin-bottom: 1.25rem;
     max-width: 100%;
+
+  } 
  .image-pair{
   display:flex;
   gap:1.2rem;
@@ -126,4 +130,8 @@ const imageGroups = [
       grid-template-columns: 1fr;
     }
   }
+  .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
 </style>
