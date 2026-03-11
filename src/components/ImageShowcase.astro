@@ -3,7 +3,7 @@
 
 const imageGroups = [
   {
-    description: "Comparison of storage write patterns under low-frequency vibration (5-20 Hz). Left: baseline approach showing data fragmentation. Right: our adaptive method maintaining sequential writes.",
+    description: "Critical example of failure and near miss due to vibration.",
     images: [
       { 
         // Use /preview for videos to work in iframes
@@ -20,18 +20,21 @@ const imageGroups = [
     ],
   },
   {
-    description: "Performance under high-frequency vibration (50-200 Hz). Left: conventional storage with visible write errors. Right: our system dynamically adjusting error-correction levels.",
+    description: "Existing system fails to deal with vibration",
     images: [
-      { src: "/images/image1.jpg", alt: "Conventional high-freq", isVideo: false },
-      { src: "/images/image1.jpg", alt: "Adaptive high-freq", isVideo: false },
-    ],
+  { 
+    // VIDEO FIX: Use the /preview slug for iframes
+    src: "https://drive.google.com/file/d/1d0NzHbr9tLY3J6kul0ASwKZL9BZiMAeu/preview", 
+    alt: "Conventional storage video", 
+    isVideo: true 
+  }, 
+  { 
+    // IMAGE FIX: Use the thumbnail API with the File ID
+    src: "https://drive.google.com/thumbnail?id=16Yvv_30e39Ls8XdcL4X_U8xKTXmARlnF&sz=w1000", 
+    alt: "Adaptive storage", 
+    isVideo: false 
   },
-  {
-    description: "Real-world road test results on varying terrain. Left: gravel road scenario. Right: highway cruising scenario, demonstrating the system's adaptability.",
-    images: [
-      { src: "/images/image1.jpg", alt: "Gravel road test", isVideo: false },
-      { src: "/images/image1.jpg", alt: "Highway cruising test", isVideo: false },
-    ],
+],
   },
 ];
 ---
