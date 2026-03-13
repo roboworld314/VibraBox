@@ -3,38 +3,137 @@
 ---
 <section id="demo-video" class="content-section">
   <div class="section-container">
-    <h2 class="section-heading reveal">Demo Video</h2>
-
-    <div class="video-block card reveal">
-      <div class="video-container">
-        <iframe
-          src="https://drive.google.com/file/d/1KzPWLz3nezkVdFmeEmsCXbyc-ZKv6xac/preview"
-          width="100%"
-          height="100%"
-          allow="autoplay"
-          allowfullscreen
-          frameborder="0"
-        ></iframe>
-      </div>
+    <div class="header-with-actions">
+      <h2 class="section-heading reveal">Demo Video</h2>
+      <a 
+        href="https://drive.google.com/file/d/1KzPWLz3nezkVdFmeEmsCXbyc-ZKv6xac/view?usp=sharing" 
+        target="_blank" 
+        class="external-link-icon"
+        title="Open in external window"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+      </a>
     </div>
 
-    <!-- <p class="video-caption reveal">
-      Full demonstration of the CAV Black Box system operating under varying road conditions, 
-      including highway driving, cobblestone roads, and off-road terrain.
-    </p> -->
+    <div class="video-block card reveal">
+      <div class="video-container" id="videoWrapper">
+        <iframe
+          id="videoIframe"
+          src="https://drive.google.com/file/d/1KzPWLz3nezkVdFmeEmsCXbyc-ZKv6xac/preview"
+          allow="autoplay; fullscreen"
+          frameborder="0"
+        ></iframe>
+        
+        <div class="zoom-controls">
+          <button onclick="changeZoom(-0.1)" title="Zoom Out">−</button>
+          <span id="zoomLevel">100%</span>
+          <button onclick="changeZoom(0.1)" title="Zoom In">+</button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
+<script is:inline>
+  let currentZoom = 1;
+  function changeZoom(delta) {
+    const iframe = document.getElementById('videoIframe');
+    const zoomText = document.getElementById('zoomLevel');
+    currentZoom = Math.max(0.5, Math.min(2, currentZoom + delta));
+    iframe.style.transform = `scale(${currentZoom})`;
+    zoomText.innerText = `${Math.round(currentZoom * 100)}%`;
+  }
+</script>
+
 <style>
+  .header-with-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .external-link-icon {
+    color: var(--color-primary);
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.3s;
+    background: rgba(0,0,0,0.05);
+  }
+
+  .external-link-icon:hover {
+    background: rgba(0,0,0,0.1);
+  }
+
+  .video-block {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  .video-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #0f0f14;
+    position: relative;
+    overflow: hidden; /* Clips the zoomed video */
+  }
+
+  #videoIframe {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s ease-out;
+    transform-origin: center;
+  }
+
+  /* Mimicking the Drive Zoom Controls */
+  .zoom-controls {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 30, 30, 0.85);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    backdrop-filter: blur(5px);
+    z-index: 10;
+  }
+
+  .zoom-controls button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .zoom-controls span {
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    min-width: 40px;
+    text-align: center;
+  }
+
+  /* Re-using your existing heading style */
   .section-heading {
+    margin-bottom: 0; /* Adjusted for the flex container */
     font-family: var(--font-heading);
     font-size: 1.6rem;
     color: var(--color-primary);
-    margin-bottom: 1.5rem;
     position: relative;
     padding-bottom: 0.75rem;
   }
-
+  
   .section-heading::after {
     content: '';
     position: absolute;
@@ -44,32 +143,5 @@
     height: 3px;
     background: var(--color-accent);
     border-radius: 2px;
-  }
-
-  .video-block {
-    border-radius: var(--radius-md);
-    overflow: hidden;
-  }
-
-  .video-container {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #0f0f14;
-    line-height: 0;
-  }
-
-  .video-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  .video-caption {
-    font-size: 0.95rem;
-    color: var(--color-text-light);
-    text-align: center;
-    margin-top: 1rem;
-    font-style: italic;
-    line-height: 1.6;
   }
 </style>
