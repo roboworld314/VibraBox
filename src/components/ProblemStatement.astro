@@ -10,6 +10,15 @@
       <p>
          Mobile robots operate in dynamic, uncertain environments where rare failures and near-misses are inevitable. Yet, reconstructing what truly happened remains a fundamental challenge.
       </p>
+      <p>
+      Existing approaches are limited in three key ways:
+
+(1) Incomplete evidence: External sensors miss internal autonomy states and decisions.
+(2) Infeasible always-on recording: Full-resolution logging exceeds onboard compute and storage budgets.
+(3) Distorted replay under vibration: Motion-induced artifacts corrupt sensor data, causing replay to diverge from real behavior.
+
+These limitations make failure analysis unreliable and hinder continuous system improvement.
+      </p>
 
     </div>
   </div>
@@ -27,6 +36,7 @@
     font-family: var(--font-heading);
     font-size: 1.6rem;
     color: var(--color-primary);
+  
     margin-bottom: 1.5rem;
     position: relative;
     padding-bottom: 0.75rem;
