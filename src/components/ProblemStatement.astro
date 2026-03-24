@@ -3,7 +3,7 @@
 
 const imageGroups = [
   {
-    description: "Critical example of failure and near miss.",
+    description: "Critical example of failure and near miss due to vibration.",
     images: [
       { 
         src: "https://drive.google.com/file/d/1niyuelhmT75kiylbe4b-OKTOX10nwyKl/preview", 
@@ -18,7 +18,7 @@ const imageGroups = [
     ],
   },
   {
-    description: "Existing system fails!",
+    description: "Existing system fails to deal with vibration",
     images: [
       { 
         src: "https://drive.google.com/file/d/1d0NzHbr9tLY3J6kul0ASwKZL9BZiMAeu/preview", 
@@ -175,16 +175,16 @@ const imageGroups = [
   /* ========== SECTION CONTAINER (MATCHES HERO.ASTRO) ========== */
 
   .content-section {
-    padding: 4rem 0.5rem 3rem;
+    padding: 4rem 2rem 3rem;
     width: 100%;
     box-sizing: border-box;
   }
 
   .section-container {
-    max-width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     width: 100%;
-    padding: 0 1rem;
+    padding: 0 2rem;
     box-sizing: border-box;
   }
 
@@ -347,15 +347,6 @@ const imageGroups = [
     }
     75% {
       transform: translateX(3px);
-    }
-  }
-
-  @keyframes shimmer {
-    0% {
-      right: -100%;
-    }
-    100% {
-      right: 100%;
     }
   }
 
@@ -545,7 +536,11 @@ const imageGroups = [
   /* Tablet (1024px and below) */
   @media (max-width: 1024px) {
     .content-section {
-      padding: 3.5rem 0.4rem 3rem;
+      padding: 3.5rem 1.5rem 3rem;
+    }
+
+    .section-container {
+      padding: 0 1.5rem;
     }
 
     .section-heading {
@@ -591,11 +586,11 @@ const imageGroups = [
   /* Tablet (768px and below) */
   @media (max-width: 768px) {
     .content-section {
-      padding: 3rem 0.35rem 2.5rem;
+      padding: 3rem 1.25rem 2.5rem;
     }
 
     .section-container {
-      padding: 0 0.75rem;
+      padding: 0 1.25rem;
     }
 
     .section-heading {
@@ -707,11 +702,11 @@ const imageGroups = [
   /* Mobile (480px and below) */
   @media (max-width: 480px) {
     .content-section {
-      padding: 2.5rem 0.3rem 2rem;
+      padding: 2.5rem 1rem 2rem;
     }
 
     .section-container {
-      padding: 0 0.5rem;
+      padding: 0 1rem;
     }
 
     .section-heading {
@@ -831,11 +826,11 @@ const imageGroups = [
   /* Extra Small (360px and below) */
   @media (max-width: 360px) {
     .content-section {
-      padding: 2rem 0.25rem 1.5rem;
+      padding: 2rem 0.75rem 1.5rem;
     }
 
     .section-container {
-      padding: 0 0.4rem;
+      padding: 0 0.75rem;
     }
 
     .section-heading {
@@ -916,11 +911,11 @@ const imageGroups = [
   /* Extra Small (320px and below) */
   @media (max-width: 320px) {
     .content-section {
-      padding: 1.75rem 0.2rem 1.5rem;
+      padding: 1.75rem 0.5rem 1.5rem;
     }
 
     .section-container {
-      padding: 0 0.35rem;
+      padding: 0 0.5rem;
     }
 
     .section-heading {
