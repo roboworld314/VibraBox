@@ -1,3 +1,189 @@
+---
+// ProblemStatement.astro — Section 2: Problem Statement + Image Showcase merged
+
+const imageGroups = [
+  {
+    description: "Critical example of failure and near miss due to vibration.",
+    images: [
+      { 
+        src: "https://drive.google.com/file/d/1niyuelhmT75kiylbe4b-OKTOX10nwyKl/preview", 
+        alt: "Conventional storage video", 
+        isVideo: true 
+      }, 
+      { 
+        src: "https://drive.google.com/thumbnail?id=1cCOkD-07gkVU_4yxMg31fcoXqf5gX9MT&sz=w1000", 
+        alt: "Adaptive storage", 
+        isVideo: false 
+      },
+    ],
+  },
+  {
+    description: "Existing system fails to deal with vibration",
+    images: [
+      { 
+        src: "https://drive.google.com/file/d/1d0NzHbr9tLY3J6kul0ASwKZL9BZiMAeu/preview", 
+        alt: "Conventional storage video", 
+        isVideo: true 
+      }, 
+      { 
+        src: "https://drive.google.com/thumbnail?id=16Yvv_30e39Ls8XdcL4X_U8xKTXmARlnF&sz=w1000", 
+        alt: "Adaptive storage", 
+        isVideo: false 
+      },
+    ],
+  },
+];
+---
+
+<!-- Section 1: Problem Statement -->
+<section id="problem-statement" class="content-section">
+  <div class="section-container">
+    <h2 class="section-heading reveal">System-Level Bottlenecks in Perception-Faithful Replay</h2>
+
+    <div class="prose reveal">
+      <p>
+        Mobile robots operate in dynamic, uncertain environments where rare failures and near-misses are inevitable. Yet, reconstructing what truly happened remains a fundamental challenge.
+      </p>
+
+      <div class="problem-highlights">
+        <p>Existing approaches are limited in three key ways:</p>
+        
+        <div class="highlight-box">
+          <div class="highlight-item">
+            <span class="highlight-number">1</span>
+            <div class="highlight-content">
+              <h4>Incomplete Evidence</h4>
+              <p>External sensors miss internal autonomy states and decisions.</p>
+            </div>
+          </div>
+
+          <div class="highlight-item">
+            <span class="highlight-number">2</span>
+            <div class="highlight-content">
+              <h4>Infeasible Recording</h4>
+              <p>Full-resolution logging exceeds onboard compute and storage budgets.</p>
+            </div>
+          </div>
+
+          <div class="highlight-item">
+            <span class="highlight-number">3</span>
+            <div class="highlight-content">
+              <h4>Distorted Replay</h4>
+              <p>Vibration-induced artifacts corrupt sensor data, causing replay to diverge from real behavior.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="conclusion">
+        These limitations make failure analysis unreliable and hinder continuous system improvement.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: Image Showcase -->
+<section id="image-showcase" class="content-section">
+  <div class="section-container">
+    <h2 class="section-heading reveal">Visual Evidence</h2>
+
+    <div class="image-groups">
+      {imageGroups.map((group, index) => (
+        <div class="image-group reveal" style={`transition-delay: ${index * 0.1}s`}>
+          <p class="group-description">{group.description}</p>
+          <div class="image-pair">
+            {group.images.map((media, mediaIndex) => (
+              <div class="image-card card" key={mediaIndex}>
+                {media.isVideo ? (
+                  <div class="video-wrapper">
+                    <iframe 
+                      src={media.src} 
+                      allow="autoplay" 
+                      loading="lazy"
+                      title={media.alt}>
+                    </iframe>
+                  </div>
+                ) : (
+                  <img src={media.src} alt={media.alt} loading="lazy" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Research Questions -->
+<section id="research-questions" class="content-section">
+  <div class="section-container">
+    <h2 class="section-heading reveal">Research Questions</h2>
+
+    <div class="prose reveal">
+      <p>
+        We propose <strong>VibraBox</strong>, a vibration-aware robot Black Box that enables efficient yet perception-faithful 
+        recording under real-world disturbances. It is guided by three system-level research questions:
+      </p>
+
+      <div class="research-questions-box">
+        <div class="question-item">
+          <div class="question-badge">
+            <span class="question-number">1</span>
+          </div>
+          <div class="question-content">
+            <p>
+              <strong>How to record</strong> continuously within bounded resources while preserving pre/during/post-event context?
+            </p>
+          </div>
+        </div>
+
+        <div class="question-item">
+          <div class="question-badge">
+            <span class="question-number">2</span>
+          </div>
+          <div class="question-content">
+            <p>
+              <strong>How to remove</strong> temporal and spatial redundancy without sacrificing downstream replay fidelity for 
+              perception and localization?
+            </p>
+          </div>
+        </div>
+
+        <div class="question-item">
+          <div class="question-badge">
+            <span class="question-number">3</span>
+          </div>
+          <div class="question-content">
+            <p>
+              <strong>How to adapt</strong> to vibration-induced corruption so replay remains consistent with online behavior?
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ========== SECTION CONTAINER (MATCHES HERO.ASTRO) ========== */
+
+  .content-section {
+    padding: 4rem 0.5rem 3rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .section-container {
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  /* ========== PROBLEM STATEMENT STYLES ========== */
+  
   .section-heading {
     font-family: var(--font-heading);
     font-size: 1.6rem;
@@ -197,46 +383,69 @@
 
   .research-questions-box {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0 0 0;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.75rem;
+    margin: 2.5rem 0 0 0;
   }
 
   .question-item {
     display: flex;
-    gap: 1.25rem;
-    padding: 1.5rem;
-    background: linear-gradient(135deg, rgba(27, 42, 74, 0.04) 0%, rgba(192, 94, 60, 0.03) 100%);
+    gap: 1.5rem;
+    padding: 1.75rem;
+    background: linear-gradient(135deg, rgba(192, 94, 60, 0.03) 0%, rgba(27, 42, 74, 0.02) 100%);
     border: 2px solid var(--color-border-light);
-    border-radius: 12px;
-    transition: all 0.3s ease;
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    align-items: flex-start;
   }
 
   .question-item:hover {
     border-color: var(--color-accent);
-    background: linear-gradient(135deg, rgba(27, 42, 74, 0.06) 0%, rgba(192, 94, 60, 0.05) 100%);
-    box-shadow: 0 6px 20px rgba(192, 94, 60, 0.08);
-    transform: translateY(-2px);
+    background: linear-gradient(135deg, rgba(192, 94, 60, 0.06) 0%, rgba(27, 42, 74, 0.04) 100%);
+    box-shadow: 0 8px 24px rgba(192, 94, 60, 0.12);
+    transform: translateY(-4px);
+  }
+
+  .question-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-accent) 0%, #c0523c 100%);
+    color: white;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(192, 94, 60, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .question-item:hover .question-badge {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(192, 94, 60, 0.4);
   }
 
   .question-number {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    min-width: 50px;
-    height: 50px;
-    background: var(--color-accent);
-    color: white;
-    border-radius: 50%;
+    font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 0.9rem;
-    flex-shrink: 0;
+    font-size: 1.8rem;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+  }
+
+  .question-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .question-content p {
     font-size: 1rem;
     font-weight: 300;
-    line-height: 1.7;
+    line-height: 1.75;
     color: var(--color-text);
     margin: 0;
   }
@@ -268,6 +477,24 @@
     }
 
     .group-description {
+      font-size: 0.95rem;
+    }
+
+    .research-questions-box {
+      gap: 1.5rem;
+    }
+
+    .question-badge {
+      min-width: 55px;
+      width: 55px;
+      height: 55px;
+    }
+
+    .question-number {
+      font-size: 1.6rem;
+    }
+
+    .question-content p {
       font-size: 0.95rem;
     }
   }
@@ -358,22 +585,29 @@
     }
 
     .research-questions-box {
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 1.25rem;
+      margin: 2rem 0 0 0;
     }
 
     .question-item {
-      padding: 1.25rem;
-      gap: 1rem;
+      padding: 1.5rem;
+      gap: 1.25rem;
+    }
+
+    .question-badge {
+      min-width: 50px;
+      width: 50px;
+      height: 50px;
     }
 
     .question-number {
-      min-width: 45px;
-      height: 45px;
-      font-size: 0.8rem;
+      font-size: 1.5rem;
     }
 
     .question-content p {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      line-height: 1.65;
     }
   }
 
@@ -472,21 +706,28 @@
     .research-questions-box {
       grid-template-columns: 1fr;
       gap: 1rem;
+      margin: 1.75rem 0 0 0;
     }
 
     .question-item {
-      padding: 1rem;
-      gap: 0.75rem;
+      padding: 1.25rem;
+      gap: 1rem;
+    }
+
+    .question-badge {
+      min-width: 48px;
+      width: 48px;
+      height: 48px;
+      box-shadow: 0 2px 8px rgba(192, 94, 60, 0.25);
     }
 
     .question-number {
-      min-width: 40px;
-      height: 40px;
-      font-size: 0.75rem;
+      font-size: 1.4rem;
     }
 
     .question-content p {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      line-height: 1.6;
     }
   }
 
@@ -547,18 +788,71 @@
       font-size: 0.8rem;
     }
 
+    .research-questions-box {
+      gap: 0.75rem;
+    }
+
     .question-item {
-      padding: 0.8rem;
+      padding: 1rem;
+      gap: 0.8rem;
+    }
+
+    .question-badge {
+      min-width: 45px;
+      width: 45px;
+      height: 45px;
     }
 
     .question-number {
-      min-width: 38px;
-      height: 38px;
-      font-size: 0.7rem;
+      font-size: 1.25rem;
     }
 
     .question-content p {
       font-size: 0.8rem;
+    }
+  }
+
+  /* Extra Small (320px and below) */
+  @media (max-width: 320px) {
+    .content-section {
+      padding: 1.75rem 0.2rem 1.5rem;
+    }
+
+    .section-container {
+      padding: 0 0.35rem;
+    }
+
+    .section-heading {
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+
+    .prose p {
+      font-size: 0.8rem;
+      line-height: 1.55;
+    }
+
+    .image-card {
+      border-radius: 8px;
+    }
+
+    .question-item {
+      padding: 0.9rem;
+      gap: 0.75rem;
+    }
+
+    .question-badge {
+      min-width: 42px;
+      width: 42px;
+      height: 42px;
+    }
+
+    .question-number {
+      font-size: 1.2rem;
+    }
+
+    .question-content p {
+      font-size: 0.75rem;
     }
   }
 
