@@ -1,12 +1,15 @@
 ---
-// DemoVideo.astro — Section 5: Fixed Media Gallery
+// Datacollection.astro — Section 4: Real Run and Vibration Stratification
 ---
-<section id="demo-video" class="content-section">
+<section id="data-collection" class="content-section">
   <div class="section-container">
     <h2 class="section-heading reveal">Real Run and Vibration Stratification</h2>
 
+    <p class="section-subtitle reveal">
+      Explore how VibraBox captures and stratifies vibration data across different operational scenarios.
+    </p>
+
     <div class="media-grid reveal">
-      
       <div class="media-item card video-item">
         <div class="video-container">
           <iframe
@@ -14,33 +17,63 @@
             allow="autoplay"
             allowfullscreen
             frameborder="0"
+            loading="lazy"
           ></iframe>
         </div>
+        <div class="media-label">Robot Navigation</div>
       </div>
 
-      <div class="media-item card">
-        <img src="https://lh3.googleusercontent.com/d/1_TBdIG1UbyEB6tQ_wzuksS9Ima-5Tifo" alt="Vibration Analysis 1" />
+      <div class="media-item card image-item">
+        <img 
+          src="https://lh3.googleusercontent.com/d/1_TBdIG1UbyEB6tQ_wzuksS9Ima-5Tifo" 
+          alt="Vibration Analysis 1"
+          loading="lazy"
+        />
+        <div class="media-label">Vibration Metrics</div>
       </div>
 
-      <div class="media-item card">
-  <img 
-    src="https://lh3.googleusercontent.com/d/1cXq-6QRp2JGmHE5qpxVie5pS9SyeaFlD=w1000"
-    alt="Vibration Analysis"
-  />
-</div>
-
+      <div class="media-item card image-item">
+        <img 
+          src="https://lh3.googleusercontent.com/d/1cXq-6QRp2JGmHE5qpxVie5pS9SyeaFlD=w1000"
+          alt="Vibration Analysis 2"
+          loading="lazy"
+        />
+        <div class="media-label">Stratification Map</div>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
+  /* ========== SECTION CONTAINER (MATCHES HERO.ASTRO) ========== */
+
+  .content-section {
+    padding: 4rem 0.5rem 3rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .section-container {
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  /* ========== HEADING STYLES ========== */
+
   .section-heading {
     font-family: var(--font-heading);
     font-size: 1.6rem;
+    font-weight: 400;
     color: var(--color-primary);
-    margin-bottom: 1.5rem;
+    margin: 0 0 0.75rem 0;
     position: relative;
     padding-bottom: 0.75rem;
+    word-break: break-word;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
   }
 
   .section-heading::after {
@@ -54,53 +87,262 @@
     border-radius: 2px;
   }
 
-  .media-grid {
-    display: flex;
-    gap: 1rem;
-    align-items: stretch;
-    width: 100%;
+  .section-subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    margin: 0 0 2rem 0;
+    max-width: 100%;
   }
 
-.media-item {
-  flex: 1;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #111;
-  display: flex;
-  min-height: 180px;
-}
+  /* ========== MEDIA GRID STYLES ========== */
 
-.media-item img,
-.video-container iframe {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.75rem;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  .media-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #0f0f14;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .media-item:hover {
+    box-shadow: 0 12px 32px rgba(27, 42, 74, 0.15);
+    transform: translateY(-8px);
+    border-color: var(--color-accent);
+  }
 
   .video-container {
     width: 100%;
     height: 100%;
     position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     border: none;
+    transition: transform 0.4s ease;
   }
 
-  @media (max-width: 768px) {
+  .media-item:hover .video-container iframe {
+    transform: scale(1.04);
+  }
+
+  .media-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .media-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .media-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 60%);
+    color: white;
+    padding: 1.25rem 1rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+  }
+
+  .media-item:hover .media-label {
+    background: linear-gradient(180deg, transparent 0%, rgba(192, 94, 60, 0.6) 60%);
+  }
+
+  /* ========== RESPONSIVE STYLES ========== */
+
+  /* Tablet (1024px and below) */
+  @media (max-width: 1024px) {
+    .content-section {
+      padding: 3.5rem 0.4rem 3rem;
+    }
+
+    .section-heading {
+      font-size: 1.5rem;
+    }
+
     .media-grid {
-      flex-direction: column;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
     }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+    }
+  }
+
+  /* Tablet (768px and below) */
+  @media (max-width: 768px) {
+    .content-section {
+      padding: 3rem 0.35rem 2.5rem;
+    }
+
+    .section-container {
+      padding: 0 0.75rem;
+    }
+
+    .section-heading {
+      font-size: 1.35rem;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-heading::after {
+      width: 40px;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .media-grid {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
     .media-item {
-      min-height: 200px;
+      aspect-ratio: 4 / 3;
+      border-radius: 14px;
     }
-    .video-container {
-       padding-top: 56.25%; /* Maintains 16:9 on mobile */
+
+    .media-label {
+      padding: 1rem 0.9rem 0.8rem;
+      font-size: 0.85rem;
     }
+  }
+
+  /* Mobile (480px and below) */
+  @media (max-width: 480px) {
+    .content-section {
+      padding: 2.5rem 0.3rem 2rem;
+    }
+
+    .section-container {
+      padding: 0 0.5rem;
+    }
+
+    .section-heading {
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-heading::after {
+      width: 35px;
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .media-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .media-item {
+      aspect-ratio: 16 / 12;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .media-label {
+      padding: 0.9rem 0.8rem 0.7rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  /* Extra Small (360px and below) */
+  @media (max-width: 360px) {
+    .content-section {
+      padding: 2rem 0.25rem 1.5rem;
+    }
+
+    .section-container {
+      padding: 0 0.4rem;
+    }
+
+    .section-heading {
+      font-size: 1.1rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .media-item {
+      border-radius: 10px;
+    }
+
+    .media-label {
+      padding: 0.8rem 0.7rem 0.6rem;
+      font-size: 0.75rem;
+    }
+  }
+
+  /* Extra Small (320px and below) */
+  @media (max-width: 320px) {
+    .content-section {
+      padding: 1.75rem 0.2rem 1.5rem;
+    }
+
+    .section-container {
+      padding: 0 0.35rem;
+    }
+
+    .section-heading {
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-subtitle {
+      font-size: 0.75rem;
+      line-height: 1.55;
+    }
+
+    .media-item {
+      border-radius: 8px;
+    }
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 </style>
